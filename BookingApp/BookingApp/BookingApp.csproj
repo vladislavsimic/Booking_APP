@@ -256,9 +256,26 @@
     <Compile Include="Migrations\201706040304228_Initial.Designer.cs">
       <DependentUpon>201706040304228_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706060727088_miv1.cs" />
+    <Compile Include="Migrations\201706060727088_miv1.Designer.cs">
+      <DependentUpon>201706060727088_miv1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706060816501_migv2.cs" />
+    <Compile Include="Migrations\201706060816501_migv2.Designer.cs">
+      <DependentUpon>201706060816501_migv2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AppModel\Accommodation.cs" />
+    <Compile Include="Models\AppModel\AccommodationType.cs" />
+    <Compile Include="Models\AppModel\Comment.cs" />
+    <Compile Include="Models\AppModel\Country.cs" />
+    <Compile Include="Models\AppModel\Place.cs" />
+    <Compile Include="Models\AppModel\Region.cs" />
+    <Compile Include="Models\AppModel\Room.cs" />
+    <Compile Include="Models\AppModel\RoomReservations.cs" />
+    <Compile Include="Models\AppModel\User.cs" />
     <Compile Include="Models\BAContext.cs" />
     <Compile Include="Models\BAIdentityUser.cs" />
     <Compile Include="Models\AppUser.cs" />
@@ -343,6 +360,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706040304228_Initial.resx">
       <DependentUpon>201706040304228_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706060727088_miv1.resx">
+      <DependentUpon>201706060727088_miv1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706060816501_migv2.resx">
+      <DependentUpon>201706060816501_migv2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
