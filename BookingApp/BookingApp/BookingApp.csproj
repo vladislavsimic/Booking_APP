@@ -247,6 +247,15 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\AccommodationsController.cs" />
+    <Compile Include="Controllers\Api\AccommodationTypesController.cs" />
+    <Compile Include="Controllers\Api\AppUsersController.cs" />
+    <Compile Include="Controllers\Api\CommentsController.cs" />
+    <Compile Include="Controllers\Api\CountriesController.cs" />
+    <Compile Include="Controllers\Api\PlacesController.cs" />
+    <Compile Include="Controllers\Api\RegionsController.cs" />
+    <Compile Include="Controllers\Api\RoomReservationsController.cs" />
+    <Compile Include="Controllers\Api\RoomsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -348,8 +357,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\a\" />
-    <Folder Include="Controllers\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
