@@ -89,11 +89,19 @@
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.4.0.1\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -256,6 +264,7 @@
     <Compile Include="Controllers\Api\RegionsController.cs" />
     <Compile Include="Controllers\Api\RoomReservationsController.cs" />
     <Compile Include="Controllers\Api\RoomsController.cs" />
+    <Compile Include="Controllers\AppUsersControllerWA2.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -265,13 +274,9 @@
     <Compile Include="Migrations\201706040304228_Initial.Designer.cs">
       <DependentUpon>201706040304228_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706060727088_miv1.cs" />
-    <Compile Include="Migrations\201706060727088_miv1.Designer.cs">
-      <DependentUpon>201706060727088_miv1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706060816501_migv2.cs" />
-    <Compile Include="Migrations\201706060816501_migv2.Designer.cs">
-      <DependentUpon>201706060816501_migv2.cs</DependentUpon>
+    <Compile Include="Migrations\201706111353598_migrv1.cs" />
+    <Compile Include="Migrations\201706111353598_migrv1.Designer.cs">
+      <DependentUpon>201706111353598_migrv1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -339,7 +344,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -370,11 +377,8 @@
     <EmbeddedResource Include="Migrations\201706040304228_Initial.resx">
       <DependentUpon>201706040304228_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706060727088_miv1.resx">
-      <DependentUpon>201706060727088_miv1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706060816501_migv2.resx">
-      <DependentUpon>201706060816501_migv2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706111353598_migrv1.resx">
+      <DependentUpon>201706111353598_migrv1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

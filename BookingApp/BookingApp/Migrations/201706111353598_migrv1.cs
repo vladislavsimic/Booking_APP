@@ -3,7 +3,7 @@ namespace BookingApp.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class miv1 : DbMigration
+    public partial class migrv1 : DbMigration
     {
         public override void Up()
         {
@@ -19,7 +19,7 @@ namespace BookingApp.Migrations
                         Latitude = c.String(),
                         Longitude = c.String(),
                         ImageURL = c.String(),
-                        Approved = c.String(),
+                        Approved = c.Boolean(nullable: false),
                         AccommodationType_Id = c.Int(),
                         User_Id = c.Int(),
                         Place_Id = c.Int(),
@@ -46,7 +46,7 @@ namespace BookingApp.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Grade = c.String(),
+                        Grade = c.Int(nullable: false),
                         Text = c.String(),
                         Accommodation_Id = c.Int(),
                         User_Id = c.Int(),
@@ -73,9 +73,9 @@ namespace BookingApp.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        StartDate = c.String(),
-                        EndDate = c.String(),
-                        Timestamp = c.String(),
+                        StartDate = c.DateTime(nullable: false),
+                        EndDate = c.DateTime(nullable: false),
+                        Timestamp = c.Time(nullable: false, precision: 7),
                         Room_Id = c.Int(),
                         User_Id = c.Int(),
                     })

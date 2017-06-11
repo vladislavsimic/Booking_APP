@@ -29,8 +29,9 @@ namespace BookingApp.Models
 
         public virtual DbSet<RoomReservations> RoomsReservations { get; set; }
 
-        public BAContext() : base("MVBookingDB")
-        {            
+        public BAContext()
+            : base("BookingDB")
+        {
         }
 
         public static BAContext Create()
