@@ -4,6 +4,7 @@ namespace BookingApp.Migrations
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using ModelProj;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -30,6 +31,9 @@ namespace BookingApp.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.Countries.AddOrUpdate(
+                new Country {Id=1,Name="Srbija",Code=381});
 
             if (!context.Roles.Any(r => r.Name == "Admin"))
             {

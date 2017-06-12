@@ -13,17 +13,21 @@ using ModelProj;
 
 namespace BookingApp.Controllers.API
 {
+    [RoutePrefix("country")]
     public class CountriesController : ApiController
     {
         private BAContext db = new BAContext();
 
-        // GET: api/Countries
-        public IQueryable<Country> GetCountries()
+        [HttpGet]
+        [Route("countries", Name = "CountryApi")]
+        public IHttpActionResult GetCountries()
         {
-            return db.Countries;
+            var l = this.db.Countries.ToList();
+            return Ok(l);
         }
 
-        // GET: api/Countries/5
+        [HttpGet]
+        [Route("country/{id}")]
         [ResponseType(typeof(Country))]
         public IHttpActionResult GetCountry(int id)
         {
@@ -36,8 +40,9 @@ namespace BookingApp.Controllers.API
             return Ok(country);
         }
 
-        // PUT: api/Countries/5
-        [ResponseType(typeof(void))]
+        [HttpPut]
+        [Route("country/{id}")]
+        [ResponseType(typeof(Country))]
         public IHttpActionResult PutCountry(int id, Country country)
         {
             if (!ModelState.IsValid)
@@ -71,7 +76,8 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Countries
+        [HttpPost]
+        [Route("country")]
         [ResponseType(typeof(Country))]
         public IHttpActionResult PostCountry(Country country)
         {
@@ -83,10 +89,11 @@ namespace BookingApp.Controllers.API
             db.Countries.Add(country);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = country.Id }, country);
+            return CreatedAtRoute("CountryApi", new { id = country.Id }, country);
         }
 
-        // DELETE: api/Countries/5
+        [HttpDelete]
+        [Route("country/{id}")]
         [ResponseType(typeof(Country))]
         public IHttpActionResult DeleteCountry(int id)
         {
