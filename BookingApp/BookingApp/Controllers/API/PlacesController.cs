@@ -42,7 +42,6 @@ namespace BookingApp.Controllers.API
 
         [HttpPut]
         [Route("place/{id}")]
-        [ResponseType(typeof(Country))]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPlace(int id, Place place)
         {

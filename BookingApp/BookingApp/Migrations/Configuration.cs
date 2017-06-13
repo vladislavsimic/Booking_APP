@@ -35,6 +35,11 @@ namespace BookingApp.Migrations
             context.Countries.AddOrUpdate(
                 new Country {Id=1,Name="Srbija",Code=381});
 
+            context.Regions.AddOrUpdate(
+                new Region { Id = 1, Name = "Vojvodina" },
+                new Region { Id = 2, Name = "Sumadija" }
+                );
+
             if (!context.Roles.Any(r => r.Name == "Admin"))
             {
                 var store = new RoleStore<IdentityRole>(context);
