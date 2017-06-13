@@ -13,17 +13,21 @@ using ModelProj;
 
 namespace BookingApp.Controllers.API
 {
+    [RoutePrefix("place")]
     public class PlacesController : ApiController
     {
         private BAContext db = new BAContext();
 
-        // GET: api/Places
-        public IQueryable<Place> GetPlaces()
+        [HttpGet]
+        [Route("places", Name = "PlaceApi")]
+        public IHttpActionResult GetPlaces()
         {
-            return db.Places;
+            var l = this.db.Places.ToList();
+            return Ok(l);
         }
 
-        // GET: api/Places/5
+        [HttpGet]
+        [Route("place/{id}")]
         [ResponseType(typeof(Place))]
         public IHttpActionResult GetPlace(int id)
         {
@@ -36,7 +40,9 @@ namespace BookingApp.Controllers.API
             return Ok(place);
         }
 
-        // PUT: api/Places/5
+        [HttpPut]
+        [Route("place/{id}")]
+        [ResponseType(typeof(Country))]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPlace(int id, Place place)
         {
@@ -71,7 +77,8 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Places
+        [HttpPost]
+        [Route("place")]
         [ResponseType(typeof(Place))]
         public IHttpActionResult PostPlace(Place place)
         {
@@ -83,10 +90,11 @@ namespace BookingApp.Controllers.API
             db.Places.Add(place);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = place.Id }, place);
+            return CreatedAtRoute("PlaceApi", new { id = place.Id }, place);
         }
 
-        // DELETE: api/Places/5
+        [HttpDelete]
+        [Route("place/{id}")]
         [ResponseType(typeof(Place))]
         public IHttpActionResult DeletePlace(int id)
         {

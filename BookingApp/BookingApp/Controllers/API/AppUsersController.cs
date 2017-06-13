@@ -12,17 +12,21 @@ using BookingApp.Models;
 
 namespace BookingApp.Controllers.API
 {
+    [RoutePrefix("appUser")]
     public class AppUsersController : ApiController
     {
         private BAContext db = new BAContext();
 
-        // GET: api/AppUsers
-        public IQueryable<AppUser> GetAppUsers()
+        [HttpGet]
+        [Route("appUser", Name = "AppUserApi")]
+        public IHttpActionResult GetAppUsers()
         {
-            return db.AppUsers;
+            var l = this.db.AppUsers.ToList();
+            return Ok(l);
         }
 
-        // GET: api/AppUsers/5
+        [HttpGet]
+        [Route("appUsers/{id}")]
         [ResponseType(typeof(AppUser))]
         public IHttpActionResult GetAppUser(int id)
         {
@@ -35,7 +39,8 @@ namespace BookingApp.Controllers.API
             return Ok(appUser);
         }
 
-        // PUT: api/AppUsers/5
+        [HttpGet]
+        [Route("appUser/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAppUser(int id, AppUser appUser)
         {
@@ -70,7 +75,8 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/AppUsers
+        [HttpGet]
+        [Route("appUser")]
         [ResponseType(typeof(AppUser))]
         public IHttpActionResult PostAppUser(AppUser appUser)
         {
@@ -82,10 +88,11 @@ namespace BookingApp.Controllers.API
             db.AppUsers.Add(appUser);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = appUser.Id }, appUser);
+            return CreatedAtRoute("AppUserApi", new { id = appUser.Id }, appUser);
         }
 
-        // DELETE: api/AppUsers/5
+        [HttpGet]
+        [Route("appUser/{id}")]
         [ResponseType(typeof(AppUser))]
         public IHttpActionResult DeleteAppUser(int id)
         {

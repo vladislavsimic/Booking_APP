@@ -13,17 +13,21 @@ using ModelProj;
 
 namespace BookingApp.Controllers.API
 {
+    [RoutePrefix("region")]
     public class RegionsController : ApiController
     {
         private BAContext db = new BAContext();
 
-        // GET: api/Regions
-        public IQueryable<Region> GetRegions()
+        [HttpGet]
+        [Route("regions", Name = "RegionApi")]
+        public IHttpActionResult GetRegions()
         {
-            return db.Regions;
+            var l = this.db.Regions.ToList();
+            return Ok(l);
         }
 
-        // GET: api/Regions/5
+        [HttpGet]
+        [Route("region/{id}")]
         [ResponseType(typeof(Region))]
         public IHttpActionResult GetRegion(int id)
         {
@@ -36,7 +40,8 @@ namespace BookingApp.Controllers.API
             return Ok(region);
         }
 
-        // PUT: api/Regions/5
+        [HttpPut]
+        [Route("region/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutRegion(int id, Region region)
         {
@@ -71,7 +76,8 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Regions
+        [HttpPost]
+        [Route("region")]
         [ResponseType(typeof(Region))]
         public IHttpActionResult PostRegion(Region region)
         {
@@ -83,10 +89,11 @@ namespace BookingApp.Controllers.API
             db.Regions.Add(region);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = region.Id }, region);
+            return CreatedAtRoute("RegionApi", new { id = region.Id }, region);
         }
 
-        // DELETE: api/Regions/5
+        [HttpDelete]
+        [Route("region/{id}")]
         [ResponseType(typeof(Region))]
         public IHttpActionResult DeleteRegion(int id)
         {

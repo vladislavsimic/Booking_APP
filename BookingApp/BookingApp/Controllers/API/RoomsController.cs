@@ -13,17 +13,23 @@ using ModelProj;
 
 namespace BookingApp.Controllers.API
 {
+    [RoutePrefix("room")]
     public class RoomsController : ApiController
     {
         private BAContext db = new BAContext();
 
         // GET: api/Rooms
-        public IQueryable<Room> GetRooms()
+        [HttpGet]
+        [Route("rooms", Name = "RoomApi")]
+        public IHttpActionResult GetRooms()
         {
-            return db.Rooms;
+            var l = this.db.Rooms.ToList();
+            return Ok(l);
         }
 
         // GET: api/Rooms/5
+        [HttpGet]
+        [Route("room/{id}")]
         [ResponseType(typeof(Room))]
         public IHttpActionResult GetRoom(int id)
         {
@@ -37,6 +43,8 @@ namespace BookingApp.Controllers.API
         }
 
         // PUT: api/Rooms/5
+        [HttpPut]
+        [Route("room/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutRoom(int id, Room room)
         {
@@ -72,6 +80,8 @@ namespace BookingApp.Controllers.API
         }
 
         // POST: api/Rooms
+        [HttpPost]
+        [Route("room")]
         [ResponseType(typeof(Room))]
         public IHttpActionResult PostRoom(Room room)
         {
@@ -83,10 +93,12 @@ namespace BookingApp.Controllers.API
             db.Rooms.Add(room);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = room.Id }, room);
+            return CreatedAtRoute("RoomApi", new { id = room.Id }, room);
         }
 
         // DELETE: api/Rooms/5
+        [HttpDelete]
+        [Route("room/{id}")]
         [ResponseType(typeof(Room))]
         public IHttpActionResult DeleteRoom(int id)
         {

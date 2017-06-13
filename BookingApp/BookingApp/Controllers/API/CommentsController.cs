@@ -13,17 +13,21 @@ using ModelProj;
 
 namespace BookingApp.Controllers.API
 {
+    [RoutePrefix("comment")]
     public class CommentsController : ApiController
     {
         private BAContext db = new BAContext();
 
-        // GET: api/Comments
-        public IQueryable<Comment> GetComments()
+        [HttpGet]
+        [Route("comments", Name = "CommentApi")]
+        public IHttpActionResult GetComments()
         {
-            return db.Comments;
+            var l = this.db.Comments.ToList();
+            return Ok(l);
         }
 
-        // GET: api/Comments/5
+        [HttpGet]
+        [Route("comment/{id}")]
         [ResponseType(typeof(Comment))]
         public IHttpActionResult GetComment(int id)
         {
@@ -36,7 +40,8 @@ namespace BookingApp.Controllers.API
             return Ok(comment);
         }
 
-        // PUT: api/Comments/5
+        [HttpGet]
+        [Route("comment/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutComment(int id, Comment comment)
         {
@@ -71,7 +76,8 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Comments
+        [HttpGet]
+        [Route("comment")]
         [ResponseType(typeof(Comment))]
         public IHttpActionResult PostComment(Comment comment)
         {
@@ -83,10 +89,11 @@ namespace BookingApp.Controllers.API
             db.Comments.Add(comment);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = comment.Id }, comment);
+            return CreatedAtRoute("CommentApi", new { id = comment.Id }, comment);
         }
 
-        // DELETE: api/Comments/5
+        [HttpGet]
+        [Route("comment/{id}")]
         [ResponseType(typeof(Comment))]
         public IHttpActionResult DeleteComment(int id)
         {

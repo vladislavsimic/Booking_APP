@@ -13,17 +13,21 @@ using ModelProj;
 
 namespace BookingApp.Controllers.API
 {
+    [RoutePrefix("roomReservation")]
     public class RoomReservationsController : ApiController
     {
         private BAContext db = new BAContext();
 
-        // GET: api/RoomReservations
-        public IQueryable<RoomReservations> GetRoomsReservations()
+        [HttpGet]
+        [Route("roomReservations", Name = "RoomResApi")]
+        public IHttpActionResult GetRoomsReservations()
         {
-            return db.RoomsReservations;
+            var l = this.db.RoomsReservations.ToList();
+            return Ok(l);
         }
 
-        // GET: api/RoomReservations/5
+        [HttpGet]
+        [Route("roomReservation/{id}")]
         [ResponseType(typeof(RoomReservations))]
         public IHttpActionResult GetRoomReservations(int id)
         {
@@ -36,7 +40,8 @@ namespace BookingApp.Controllers.API
             return Ok(roomReservations);
         }
 
-        // PUT: api/RoomReservations/5
+        [HttpGet]
+        [Route("roomReservation/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutRoomReservations(int id, RoomReservations roomReservations)
         {
@@ -71,7 +76,8 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/RoomReservations
+        [HttpGet]
+        [Route("roomReservation")]
         [ResponseType(typeof(RoomReservations))]
         public IHttpActionResult PostRoomReservations(RoomReservations roomReservations)
         {
@@ -83,10 +89,11 @@ namespace BookingApp.Controllers.API
             db.RoomsReservations.Add(roomReservations);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = roomReservations.Id }, roomReservations);
+            return CreatedAtRoute("RoomResApi", new { id = roomReservations.Id }, roomReservations);
         }
 
-        // DELETE: api/RoomReservations/5
+        [HttpGet]
+        [Route("roomReservation/{id}")]
         [ResponseType(typeof(RoomReservations))]
         public IHttpActionResult DeleteRoomReservations(int id)
         {

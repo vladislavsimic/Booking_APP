@@ -13,17 +13,21 @@ using ModelProj;
 
 namespace BookingApp.Controllers.API
 {
+    [RoutePrefix("accomodationType")]
     public class AccommodationTypesController : ApiController
     {
         private BAContext db = new BAContext();
 
-        // GET: api/AccommodationTypes
-        public IQueryable<AccommodationType> GetAccommodationTypes()
+        [HttpGet]
+        [Route("accTypes", Name = "AccTypeApi")]
+        public IHttpActionResult GetAccommodationTypes()
         {
-            return db.AccommodationTypes;
+            var l = this.db.AccommodationTypes.ToList();
+            return Ok(l);
         }
 
-        // GET: api/AccommodationTypes/5
+        [HttpGet]
+        [Route("accType/{id}")]
         [ResponseType(typeof(AccommodationType))]
         public IHttpActionResult GetAccommodationType(int id)
         {
@@ -36,7 +40,8 @@ namespace BookingApp.Controllers.API
             return Ok(accommodationType);
         }
 
-        // PUT: api/AccommodationTypes/5
+        [HttpGet]
+        [Route("accType/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAccommodationType(int id, AccommodationType accommodationType)
         {
@@ -71,7 +76,8 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/AccommodationTypes
+        [HttpGet]
+        [Route("accType")]
         [ResponseType(typeof(AccommodationType))]
         public IHttpActionResult PostAccommodationType(AccommodationType accommodationType)
         {
@@ -83,10 +89,11 @@ namespace BookingApp.Controllers.API
             db.AccommodationTypes.Add(accommodationType);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = accommodationType.Id }, accommodationType);
+            return CreatedAtRoute("AccTypeApi", new { id = accommodationType.Id }, accommodationType);
         }
 
-        // DELETE: api/AccommodationTypes/5
+        [HttpGet]
+        [Route("accType/{id}")]
         [ResponseType(typeof(AccommodationType))]
         public IHttpActionResult DeleteAccommodationType(int id)
         {
