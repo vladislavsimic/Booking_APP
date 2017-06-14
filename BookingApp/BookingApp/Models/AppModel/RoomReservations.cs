@@ -11,7 +11,7 @@ namespace BookingApp.Models.AppModel
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
     public partial class RoomReservations
     {
         public int Id { get; set; }
@@ -20,6 +20,11 @@ namespace BookingApp.Models.AppModel
         public System.TimeSpan Timestamp { get; set; }
     
         public virtual AppUser AppUser { get; set; }
+
+
+        [ForeignKey("Room")]
+        public int Room_Id { get; set; }
+        
         public virtual Room Room { get; set; }
     }
 }
