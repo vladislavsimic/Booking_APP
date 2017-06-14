@@ -11,6 +11,7 @@ namespace BookingApp.Models.AppModel
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     
     public partial class Region
     {
@@ -25,6 +26,10 @@ namespace BookingApp.Models.AppModel
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Place> Places { get; set; }
+
+        [ForeignKey("Country")]
+        public int Country_Id { get; set; }
+
         public virtual Country Country { get; set; }
     }
 }
