@@ -4,7 +4,7 @@ namespace BookingApp.Migrations
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using ModelProj;
+    using BookingApp.Models.AppModel;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;

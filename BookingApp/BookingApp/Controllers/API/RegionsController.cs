@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using BookingApp.Models;
-using ModelProj;
+using BookingApp.Models.AppModel;
 
 namespace BookingApp.Controllers.API
 {

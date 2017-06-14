@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace BookingApp.Models
+namespace BookingApp.Models.AppModel
 {
     public class AppUser
     {

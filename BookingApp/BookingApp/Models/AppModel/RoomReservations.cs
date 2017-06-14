@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ModelProj
+namespace BookingApp.Models.AppModel
 {
     using System;
     using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace ModelProj
         public System.DateTime EndDate { get; set; }
         public System.TimeSpan Timestamp { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual AppUser AppUser { get; set; }
         public virtual Room Room { get; set; }
     }
 }

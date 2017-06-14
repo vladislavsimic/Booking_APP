@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.AccessControl;
 using System.Web;
 using Microsoft.AspNet.Identity.EntityFramework;
-using ModelProj;
+using BookingApp.Models.AppModel;
 
 namespace BookingApp.Models
 {
@@ -30,7 +30,7 @@ namespace BookingApp.Models
         public virtual DbSet<RoomReservations> RoomsReservations { get; set; }
 
         public BAContext()
-            : base("BookingDB")
+            : base("MVBookingDB")
         {
         }
 

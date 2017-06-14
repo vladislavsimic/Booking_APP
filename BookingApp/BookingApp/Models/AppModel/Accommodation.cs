@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ModelProj
+namespace BookingApp.Models.AppModel
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
     public partial class Accommodation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -31,9 +31,13 @@ namespace ModelProj
         public string ImageURL { get; set; }
         public bool Approved { get; set; }
     
-        public virtual User User { get; set; }
+        [ForeignKey("AppUser")]
+        public int AppUser_Id { get; set; }
+        public virtual AppUser AppUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Room> Rooms { get; set; }
+        [ForeignKey("AccommodationType")]
+        public int AccommodationType_Id { get; set; }
         public virtual AccommodationType AccommodationType { get; set; }
         public virtual Place Place { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

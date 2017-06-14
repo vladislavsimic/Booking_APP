@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ModelProj
+namespace BookingApp.Models.AppModel
 {
     using System;
     using System.Collections.Generic;
@@ -19,6 +19,6 @@ namespace ModelProj
         public string Text { get; set; }
     
         public virtual Accommodation Accommodation { get; set; }
-        public virtual User User { get; set; }
+        public virtual AppUser AppUser { get; set; }
     }
 }

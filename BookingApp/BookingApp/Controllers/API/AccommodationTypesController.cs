@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using BookingApp.Models;
-using ModelProj;
+using BookingApp.Models.AppModel;
 
 namespace BookingApp.Controllers.API
 {
@@ -40,7 +40,7 @@ namespace BookingApp.Controllers.API
             return Ok(accommodationType);
         }
 
-        [HttpGet]
+        [HttpPut]
         [Route("accType/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAccommodationType(int id, AccommodationType accommodationType)
@@ -76,7 +76,7 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("accType")]
         [ResponseType(typeof(AccommodationType))]
         public IHttpActionResult PostAccommodationType(AccommodationType accommodationType)
@@ -92,7 +92,7 @@ namespace BookingApp.Controllers.API
             return CreatedAtRoute("AccTypeApi", new { id = accommodationType.Id }, accommodationType);
         }
 
-        [HttpGet]
+        [HttpDelete]
         [Route("accType/{id}")]
         [ResponseType(typeof(AccommodationType))]
         public IHttpActionResult DeleteAccommodationType(int id)

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ModelProj
+namespace BookingApp.Models.AppModel
 {
     using System;
     using System.Collections.Generic;

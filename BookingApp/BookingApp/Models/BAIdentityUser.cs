@@ -7,6 +7,7 @@ using System;
 using System.Security.Cryptography;
 using System.Collections;
 using System.ComponentModel.DataAnnotations.Schema;
+using BookingApp.Models.AppModel;
 
 namespace BookingApp.Models
 {
