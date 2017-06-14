@@ -30,7 +30,11 @@ namespace BookingApp.Models
         public virtual DbSet<RoomReservations> RoomsReservations { get; set; }
 
         public BAContext()
+<<<<<<< HEAD
             : base("MVBookingDB")
+=======
+            : base("MVBookingDB11")
+>>>>>>> cae89cd3ebe4c6522cb7438dbead7addb3656258
         {
         }
 
