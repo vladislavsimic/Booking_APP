@@ -40,7 +40,7 @@ namespace BookingApp.Controllers.API
             return Ok(comment);
         }
 
-        [HttpGet]
+        [HttpPut]
         [Route("comment/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutComment(int id, Comment comment)
@@ -76,7 +76,7 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("comment")]
         [ResponseType(typeof(Comment))]
         public IHttpActionResult PostComment(Comment comment)
@@ -92,7 +92,7 @@ namespace BookingApp.Controllers.API
             return CreatedAtRoute("CommentApi", new { id = comment.Id }, comment);
         }
 
-        [HttpGet]
+        [HttpDelete]
         [Route("comment/{id}")]
         [ResponseType(typeof(Comment))]
         public IHttpActionResult DeleteComment(int id)

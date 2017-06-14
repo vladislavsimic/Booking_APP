@@ -40,7 +40,7 @@ namespace BookingApp.Controllers.API
             return Ok(accommodation);
         }
 
-        [HttpGet]
+        [HttpPut]
         [Route("acc/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAccommodation(int id, Accommodation accommodation)
@@ -76,7 +76,7 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("acc")]
         [ResponseType(typeof(Accommodation))]
         public IHttpActionResult PostAccommodation(Accommodation accommodation)
@@ -92,7 +92,7 @@ namespace BookingApp.Controllers.API
             return CreatedAtRoute("AccApi", new { id = accommodation.Id }, accommodation);
         }
 
-        [HttpGet]
+        [HttpDelete]
         [Route("acc/{id}")]
         [ResponseType(typeof(Accommodation))]
         public IHttpActionResult DeleteAccommodation(int id)

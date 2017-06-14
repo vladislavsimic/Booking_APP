@@ -39,7 +39,7 @@ namespace BookingApp.Controllers.API
             return Ok(appUser);
         }
 
-        [HttpGet]
+        [HttpPut]
         [Route("appUser/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAppUser(int id, AppUser appUser)
@@ -75,7 +75,7 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("appUser")]
         [ResponseType(typeof(AppUser))]
         public IHttpActionResult PostAppUser(AppUser appUser)
@@ -91,7 +91,7 @@ namespace BookingApp.Controllers.API
             return CreatedAtRoute("AppUserApi", new { id = appUser.Id }, appUser);
         }
 
-        [HttpGet]
+        [HttpDelete]
         [Route("appUser/{id}")]
         [ResponseType(typeof(AppUser))]
         public IHttpActionResult DeleteAppUser(int id)
