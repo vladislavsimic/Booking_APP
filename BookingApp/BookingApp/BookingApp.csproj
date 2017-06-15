@@ -302,6 +302,10 @@
     <Compile Include="Migrations\201706150856121_migrAccommodationsPlace.Designer.cs">
       <DependentUpon>201706150856121_migrAccommodationsPlace.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706151135371_migrCommentAccomodation.cs" />
+    <Compile Include="Migrations\201706151135371_migrCommentAccomodation.Designer.cs">
+      <DependentUpon>201706151135371_migrCommentAccomodation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -420,6 +424,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706150856121_migrAccommodationsPlace.resx">
       <DependentUpon>201706150856121_migrAccommodationsPlace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706151135371_migrCommentAccomodation.resx">
+      <DependentUpon>201706151135371_migrCommentAccomodation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
