@@ -11,6 +11,6 @@ namespace BookingApp.Models.AppModel
         public int Id { get; set; }
 
         [MaxLength(100)]
-        public string FullName { get; set; }
+        public string Username { get; set; }
     }
 }

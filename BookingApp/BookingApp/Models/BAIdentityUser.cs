@@ -14,6 +14,18 @@ namespace BookingApp.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class BAIdentityUser : IdentityUser
     {
+        public BAIdentityUser()
+        {
+
+        }
+
+        public BAIdentityUser(int appUserId , string username, string email)
+        {
+            this.appUserId = appUserId;
+            this.UserName = username;
+            this.Email = email;
+        }
+
         [ForeignKey("appUser")]
         public int appUserId { get; set; }
 

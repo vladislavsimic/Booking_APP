@@ -16,13 +16,15 @@ using Microsoft.Owin.Security.OAuth;
 using BookingApp.Models;
 using BookingApp.Providers;
 using BookingApp.Results;
+using BookingApp.Models.AppModel;
 
 namespace BookingApp.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/Account")]
+    [RoutePrefix("Account")]
     public class AccountController : ApiController
     {
+        private BAContext db = new BAContext();
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
 
@@ -328,9 +330,17 @@ namespace BookingApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new BAIdentityUser() { UserName = model.Email, Email = model.Email };
+            var appUser = new AppUser();
+            appUser.Username = model.Username;
+            db.AppUsers.Add(appUser);
+            db.SaveChanges();
+
+
+            var user = new BAIdentityUser(appUser.Id, model.Username, model.Email);
+            user.PasswordHash = BAIdentityUser.HashPassword(model.Password);
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+            UserManager.AddToRole(user.Id, "AppUser");
 
             if (!result.Succeeded)
             {
