@@ -39,6 +39,9 @@ namespace BookingApp.Models.AppModel
         [ForeignKey("AccommodationType")]
         public int AccommodationType_Id { get; set; }
         public virtual AccommodationType AccommodationType { get; set; }
+
+        [ForeignKey("Place")]
+        public int Place_Id { get; set; }
         public virtual Place Place { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
