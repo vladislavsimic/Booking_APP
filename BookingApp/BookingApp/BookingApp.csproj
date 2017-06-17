@@ -310,6 +310,10 @@
     <Compile Include="Migrations\201706151459102_migrAccount.Designer.cs">
       <DependentUpon>201706151459102_migrAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706161627277_migrRoomAccFK.cs" />
+    <Compile Include="Migrations\201706161627277_migrRoomAccFK.Designer.cs">
+      <DependentUpon>201706161627277_migrRoomAccFK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -434,6 +438,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706151459102_migrAccount.resx">
       <DependentUpon>201706151459102_migrAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706161627277_migrRoomAccFK.resx">
+      <DependentUpon>201706161627277_migrRoomAccFK.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

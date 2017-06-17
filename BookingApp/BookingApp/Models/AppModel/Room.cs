@@ -11,7 +11,8 @@ namespace BookingApp.Models.AppModel
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Room
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,7 +26,9 @@ namespace BookingApp.Models.AppModel
         public int BedCount { get; set; }
         public string Description { get; set; }
         public double PricePerNight { get; set; }
-    
+        
+        [ForeignKey("Accommodation")]
+        public int Acc_Id { get; set; }
         public virtual Accommodation Accommodation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RoomReservations> RoomReservations { get; set; }
