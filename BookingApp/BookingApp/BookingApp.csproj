@@ -314,6 +314,10 @@
     <Compile Include="Migrations\201706161627277_migrRoomAccFK.Designer.cs">
       <DependentUpon>201706161627277_migrRoomAccFK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706171254394_migrLatLongDouble.cs" />
+    <Compile Include="Migrations\201706171254394_migrLatLongDouble.Designer.cs">
+      <DependentUpon>201706171254394_migrLatLongDouble.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -441,6 +445,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706161627277_migrRoomAccFK.resx">
       <DependentUpon>201706161627277_migrRoomAccFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706171254394_migrLatLongDouble.resx">
+      <DependentUpon>201706171254394_migrLatLongDouble.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
