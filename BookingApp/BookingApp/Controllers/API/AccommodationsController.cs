@@ -23,6 +23,14 @@ namespace BookingApp.Controllers.API
         public IHttpActionResult GetAccommodations()
         {
             var l = this.db.Accommodations.ToList();
+            if (l != null)
+            {
+                foreach (Accommodation acc in l)
+                {
+                    if (acc.Comments.Count > 0)
+                    acc.AverageGrade = Math.Round(acc.Comments.Average(x => x.Grade), 1);
+                }
+            }
             return Ok(l);
         }
 

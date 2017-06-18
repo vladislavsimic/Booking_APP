@@ -109,6 +109,31 @@ namespace BookingApp.Controllers.API
             return Ok(roomReservations);
         }
 
+        [HttpGet]
+        [Route("roomReservationForRoom/{id}")]
+        [ResponseType(typeof(RoomReservations))]
+        public IHttpActionResult GetRoomReservationsForRoom(int id)
+        {
+            List<RoomReservations> roomReservations = new List<RoomReservations>();
+            try
+            {
+                Room room = db.Rooms.Find(id);
+                roomReservations = room.RoomReservations.ToList();
+            }
+            catch (Exception)
+            {
+
+                return NotFound();
+            }
+            
+            if (roomReservations == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(roomReservations);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
