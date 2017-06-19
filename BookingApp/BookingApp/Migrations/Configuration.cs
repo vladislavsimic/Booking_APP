@@ -76,6 +76,11 @@ namespace BookingApp.Migrations
                 p => p.Username,
                 new AppUser() { Username = "AppUser AppUserovic" }
             );
+
+            context.AppUsers.AddOrUpdate(
+                p => p.Username,
+                new AppUser() { Username = "mico mico" }
+            );
             context.SaveChanges();
 
             var userStore = new UserStore<BAIdentityUser>(context);
@@ -94,6 +99,14 @@ namespace BookingApp.Migrations
                 var user = new BAIdentityUser() { Id = "appu", UserName = "appu", Email = "appu@yahoo.com", PasswordHash = BAIdentityUser.HashPassword("appu"), appUserId = _appUser.Id };
                 userManager.Create(user);
                 userManager.AddToRole(user.Id, "AppUser");
+            }
+
+            if (!context.Users.Any(u => u.UserName == "mico"))
+            {
+                var _appUser = context.AppUsers.FirstOrDefault(a => a.Username == "mico mico");
+                var user = new BAIdentityUser() { Id = "mico", UserName = "mico", Email = "mico@yahoo.com", PasswordHash = BAIdentityUser.HashPassword("mico"), appUserId = _appUser.Id };
+                userManager.Create(user);
+                userManager.AddToRole(user.Id, "Manager");
             }
         }
     }

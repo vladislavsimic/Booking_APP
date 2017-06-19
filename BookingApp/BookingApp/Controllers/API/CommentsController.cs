@@ -87,6 +87,8 @@ namespace BookingApp.Controllers.API
             }
 
             db.Comments.Add(comment);
+            Accommodation accommodation = db.Accommodations.FirstOrDefault(x => x.Id == comment.Acc_Id);
+            accommodation.AverageGrade = Math.Round(accommodation.Comments.Average(x => x.Grade), 1);
             db.SaveChanges();
 
             return CreatedAtRoute("CommentApi", new { id = comment.Id }, comment);
