@@ -14,6 +14,7 @@ using System.Web;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net.Http.Headers;
+using BookingApp.Hubs;
 
 namespace BookingApp.Controllers.API
 {
@@ -167,28 +168,6 @@ namespace BookingApp.Controllers.API
 
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
-
-            /*Dictionary<string, object> dict = new Dictionary<string, object>();
-            try
-            {
-
-                var httpRequest = HttpContext.Current.Request;
-
-                foreach (string file in httpRequest.Files)
-                {
-                    var postedFile = httpRequest.Files[file];
-                    if (postedFile != null && postedFile.ContentLength > 0)
-                    {
-                    }
-                }
-               
-            }
-            catch (Exception ex)
-            {
-                
-            }
-
-            return Request.CreateResponse(HttpStatusCode.BadRequest, dict);*/
         }
 
         [HttpDelete]
@@ -206,6 +185,49 @@ namespace BookingApp.Controllers.API
             db.SaveChanges();
 
             return Ok(accommodation);
+        }
+
+        [AllowAnonymous]
+        [HttpPut]
+        [Route("approve/{id}")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult ApproveAccomodation(int id)
+        {
+
+            var accomodation = db.Accommodations.FirstOrDefault(x => x.Id == id);
+
+            if (accomodation == null)
+            {
+                return this.NotFound();
+            }
+
+            accomodation.Approved = true;
+
+            db.Entry(accomodation).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+
+                AppUser appUser = this.db.AppUsers.FirstOrDefault(x => x.Id == accomodation.AppUser_Id);
+                if (appUser != null)
+                {
+                    NotificationHub.NotifyManager(accomodation.Name, appUser.Username);
+                }
+
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!AccommodationExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         protected override void Dispose(bool disposing)

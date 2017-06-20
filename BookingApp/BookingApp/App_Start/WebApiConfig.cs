@@ -35,8 +35,8 @@ namespace BookingApp
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
-            var cors = new EnableCorsAttribute("http://localhost:4200", "*", "*");
-            config.EnableCors(cors);
+           // var cors = new EnableCorsAttribute("http://localhost:4200", "*", "*");
+           // config.EnableCors(cors);
 			
             // Web API routes
             config.MapHttpAttributeRoutes();
