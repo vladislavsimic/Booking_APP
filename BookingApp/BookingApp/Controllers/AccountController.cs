@@ -332,6 +332,7 @@ namespace BookingApp.Controllers
 
             var appUser = new AppUser();
             appUser.Username = model.Username;
+            appUser.Role = model.Role;
             db.AppUsers.Add(appUser);
             db.SaveChanges();
 

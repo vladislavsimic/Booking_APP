@@ -27,11 +27,44 @@ namespace BookingApp.Controllers.API
         }
 
         [HttpGet]
+        [Route("managers")]
+        public IHttpActionResult GetManagers()
+        {
+            IList<AppUser> retList = new List<AppUser>();
+            var l = this.db.AppUsers.ToList();
+            foreach (var user in l)
+            {
+                if (user.Role == "Manager")
+                {
+                    retList.Add(user);
+                }
+            }
+
+            return Ok(retList);
+        }
+
+        [HttpGet]
         [Route("appUsers/{id}")]
         [ResponseType(typeof(AppUser))]
         public IHttpActionResult GetAppUser(int id)
         {
             AppUser appUser = db.AppUsers.Find(id);
+
+            if (appUser == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(appUser);
+        }
+
+        [HttpGet]
+        [Route("manager/{username}")]
+        [ResponseType(typeof(AppUser))]
+        public IHttpActionResult GetAppUser(string username)
+        {
+            AppUser appUser = db.AppUsers.FirstOrDefault(x=>x.Username==username);
+
             if (appUser == null)
             {
                 return NotFound();
