@@ -42,6 +42,23 @@ namespace BookingApp.Controllers.API
         }
 
         [HttpGet]
+        [Route("accsmanager/{username}")]
+        public IHttpActionResult GetAccommodations(string username)
+        {
+            AppUser user = this.db.AppUsers.FirstOrDefault(x => x.Username == username);
+            var l = this.db.Accommodations.Where(x=>x.AppUser_Id==user.Id).ToList();
+            if (l != null)
+            {
+                /* foreach (Accommodation acc in l)
+                 {
+                     if (acc.Comments.Count > 0)
+                     acc.AverageGrade = Math.Round(acc.Comments.Average(x => x.Grade), 1);
+                 }*/
+            }
+            return Ok(l);
+        }
+
+        [HttpGet]
         [Route("acc/{id}")]
         [ResponseType(typeof(Accommodation))]
         public IHttpActionResult GetAccommodation(int id)

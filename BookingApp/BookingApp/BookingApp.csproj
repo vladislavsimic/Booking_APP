@@ -351,6 +351,10 @@
     <Compile Include="Migrations\201706192250446_appUserRole.Designer.cs">
       <DependentUpon>201706192250446_appUserRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706210343504_commentUserIdddd.cs" />
+    <Compile Include="Migrations\201706210343504_commentUserIdddd.Designer.cs">
+      <DependentUpon>201706210343504_commentUserIdddd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -490,6 +494,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706192250446_appUserRole.resx">
       <DependentUpon>201706192250446_appUserRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706210343504_commentUserIdddd.resx">
+      <DependentUpon>201706210343504_commentUserIdddd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
