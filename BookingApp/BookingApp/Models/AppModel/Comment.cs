@@ -21,6 +21,6 @@ namespace BookingApp.Models.AppModel
         [ForeignKey("Accommodation")]
         public int Acc_Id { get; set; }
         public virtual Accommodation Accommodation { get; set; }
-        public virtual AppUser AppUser { get; set; }
+        public virtual AppUser User { get; set; }
     }
 }
