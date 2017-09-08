@@ -26,6 +26,7 @@ namespace BookingApp.Controllers.API
             return Ok(l);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("managers")]
         public IHttpActionResult GetManagers()

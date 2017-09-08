@@ -11,6 +11,7 @@ namespace BookingApp.Models.AppModel
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     public partial class Accommodation
     {
@@ -21,9 +22,13 @@ namespace BookingApp.Models.AppModel
             this.Comments = new HashSet<Comment>();
         }
     
+        [Key]
         public int Id { get; set; }
+        [MaxLength(40)]
         public string Name { get; set; }
+        [MaxLength(120)]
         public string Description { get; set; }
+        [MaxLength(40)]
         public string Address { get; set; }
         public double AverageGrade { get; set; }
         public double Latitude { get; set; }

@@ -18,6 +18,7 @@ namespace BookingApp.Controllers.API
     {
         private BAContext db = new BAContext();
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("comments", Name = "CommentApi")]
         public IHttpActionResult GetComments()
@@ -26,6 +27,7 @@ namespace BookingApp.Controllers.API
             return Ok(l);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("comment/{id}")]
         [ResponseType(typeof(Comment))]
@@ -40,6 +42,7 @@ namespace BookingApp.Controllers.API
             return Ok(comment);
         }
 
+        [Authorize(Roles="AppUser")]
         [HttpPut]
         [Route("comment/{id}")]
         [ResponseType(typeof(void))]
@@ -76,6 +79,7 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Authorize(Roles="AppUser")]
         [HttpPost]
         [Route("comment")]
         [ResponseType(typeof(Comment))]
@@ -95,6 +99,7 @@ namespace BookingApp.Controllers.API
             return CreatedAtRoute("CommentApi", new { id = comment.Id }, comment);
         }
 
+        [Authorize(Roles="AppUser")]
         [HttpDelete]
         [Route("comment/{id}")]
         [ResponseType(typeof(Comment))]

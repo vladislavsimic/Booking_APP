@@ -18,14 +18,22 @@ namespace BookingApp.Controllers.API
     {
         private BAContext db = new BAContext();
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("countries", Name = "CountryApi")]
         public IHttpActionResult GetCountries()
         {
             var l = this.db.Countries.ToList();
+            
+            if (l == null)
+            {
+                return NotFound();
+            }
+
             return Ok(l);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("country/{id}")]
         [ResponseType(typeof(Country))]
@@ -40,6 +48,7 @@ namespace BookingApp.Controllers.API
             return Ok(country);
         }
 
+        [Authorize(Roles="Admin")]
         [HttpPut]
         [Route("country/{id}")]
         [ResponseType(typeof(Country))]
@@ -73,9 +82,10 @@ namespace BookingApp.Controllers.API
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(country);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("country")]
         [ResponseType(typeof(Country))]
@@ -86,12 +96,32 @@ namespace BookingApp.Controllers.API
                 return BadRequest(ModelState);
             }
 
-            db.Countries.Add(country);
-            db.SaveChanges();
+            bool countryExists = false;
+            foreach (var item in db.Countries)
+            {
+                if (item.Name.Equals(country.Name) && item.Code.Equals(country.Code))
+                {
+                    countryExists = true;
+                    break;
+                }
+            }
 
-            return CreatedAtRoute("CountryApi", new { id = country.Id }, country);
+            if (countryExists == false)
+            {
+                db.Countries.Add(country);
+                db.SaveChanges();
+
+                return CreatedAtRoute("CountryApi", new { id = country.Id }, country);
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+            
         }
 
+        [Authorize(Roles="Admin")]
         [HttpDelete]
         [Route("country/{id}")]
         [ResponseType(typeof(Country))]
@@ -104,9 +134,24 @@ namespace BookingApp.Controllers.API
             }
 
             db.Countries.Remove(country);
-            db.SaveChanges();
 
-            return Ok(country);
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (db.Countries.Find(id) == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         protected override void Dispose(bool disposing)

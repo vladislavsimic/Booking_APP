@@ -18,6 +18,7 @@ namespace BookingApp.Controllers.API
     {
         private BAContext db = new BAContext();
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("accTypes", Name = "AccTypeApi")]
         public IHttpActionResult GetAccommodationTypes()
@@ -26,6 +27,7 @@ namespace BookingApp.Controllers.API
             return Ok(l);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("accType/{id}")]
         [ResponseType(typeof(AccommodationType))]
@@ -40,6 +42,7 @@ namespace BookingApp.Controllers.API
             return Ok(accommodationType);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         [Route("accType/{id}")]
         [ResponseType(typeof(void))]
@@ -76,6 +79,7 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("accType")]
         [ResponseType(typeof(AccommodationType))]
@@ -92,6 +96,7 @@ namespace BookingApp.Controllers.API
             return CreatedAtRoute("AccTypeApi", new { id = accommodationType.Id }, accommodationType);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("accType/{id}")]
         [ResponseType(typeof(AccommodationType))]

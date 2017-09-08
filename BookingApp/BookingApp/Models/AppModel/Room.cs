@@ -11,6 +11,7 @@ namespace BookingApp.Models.AppModel
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class Room
@@ -21,9 +22,11 @@ namespace BookingApp.Models.AppModel
             this.RoomReservations = new HashSet<RoomReservations>();
         }
     
+        [Key]
         public int Id { get; set; }
         public int RoomNumber { get; set; }
         public int BedCount { get; set; }
+        [MaxLength(100)]
         public string Description { get; set; }
         public double PricePerNight { get; set; }
         

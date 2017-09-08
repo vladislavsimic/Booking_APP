@@ -18,6 +18,7 @@ namespace BookingApp.Controllers.API
     {
         private BAContext db = new BAContext();
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("places", Name = "PlaceApi")]
         public IHttpActionResult GetPlaces()
@@ -26,6 +27,7 @@ namespace BookingApp.Controllers.API
             return Ok(l);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("place/{id}")]
         [ResponseType(typeof(Place))]
@@ -40,6 +42,7 @@ namespace BookingApp.Controllers.API
             return Ok(place);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         [Route("place/{id}")]
         [ResponseType(typeof(void))]
@@ -76,6 +79,7 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("place")]
         [ResponseType(typeof(Place))]
@@ -92,6 +96,7 @@ namespace BookingApp.Controllers.API
             return CreatedAtRoute("PlaceApi", new { id = place.Id }, place);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("place/{id}")]
         [ResponseType(typeof(Place))]

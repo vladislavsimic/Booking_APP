@@ -299,61 +299,17 @@
     <Compile Include="Migrations\201706040304228_Initial.Designer.cs">
       <DependentUpon>201706040304228_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706111353598_migrv1.cs" />
-    <Compile Include="Migrations\201706111353598_migrv1.Designer.cs">
-      <DependentUpon>201706111353598_migrv1.cs</DependentUpon>
+    <Compile Include="Migrations\201709040954266_AllMigrations.cs" />
+    <Compile Include="Migrations\201709040954266_AllMigrations.Designer.cs">
+      <DependentUpon>201709040954266_AllMigrations.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706131607426_migrPlaces.cs" />
-    <Compile Include="Migrations\201706131607426_migrPlaces.Designer.cs">
-      <DependentUpon>201706131607426_migrPlaces.cs</DependentUpon>
+    <Compile Include="Migrations\201709072318554_migrCountryChange.cs" />
+    <Compile Include="Migrations\201709072318554_migrCountryChange.Designer.cs">
+      <DependentUpon>201709072318554_migrCountryChange.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706140840117_migrAccomodations.cs" />
-    <Compile Include="Migrations\201706140840117_migrAccomodations.Designer.cs">
-      <DependentUpon>201706140840117_migrAccomodations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706140917335_migrv2Accommodations.cs" />
-    <Compile Include="Migrations\201706140917335_migrv2Accommodations.Designer.cs">
-      <DependentUpon>201706140917335_migrv2Accommodations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706141058370_migrRoomRes.cs" />
-    <Compile Include="Migrations\201706141058370_migrRoomRes.Designer.cs">
-      <DependentUpon>201706141058370_migrRoomRes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706141936000_migrRegions.cs" />
-    <Compile Include="Migrations\201706141936000_migrRegions.Designer.cs">
-      <DependentUpon>201706141936000_migrRegions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706150856121_migrAccommodationsPlace.cs" />
-    <Compile Include="Migrations\201706150856121_migrAccommodationsPlace.Designer.cs">
-      <DependentUpon>201706150856121_migrAccommodationsPlace.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706151135371_migrCommentAccomodation.cs" />
-    <Compile Include="Migrations\201706151135371_migrCommentAccomodation.Designer.cs">
-      <DependentUpon>201706151135371_migrCommentAccomodation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706151459102_migrAccount.cs" />
-    <Compile Include="Migrations\201706151459102_migrAccount.Designer.cs">
-      <DependentUpon>201706151459102_migrAccount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706161627277_migrRoomAccFK.cs" />
-    <Compile Include="Migrations\201706161627277_migrRoomAccFK.Designer.cs">
-      <DependentUpon>201706161627277_migrRoomAccFK.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706171254394_migrLatLongDouble.cs" />
-    <Compile Include="Migrations\201706171254394_migrLatLongDouble.Designer.cs">
-      <DependentUpon>201706171254394_migrLatLongDouble.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706191343451_appuser key.cs" />
-    <Compile Include="Migrations\201706191343451_appuser key.Designer.cs">
-      <DependentUpon>201706191343451_appuser key.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706192250446_appUserRole.cs" />
-    <Compile Include="Migrations\201706192250446_appUserRole.Designer.cs">
-      <DependentUpon>201706192250446_appUserRole.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706210343504_commentUserIdddd.cs" />
-    <Compile Include="Migrations\201706210343504_commentUserIdddd.Designer.cs">
-      <DependentUpon>201706210343504_commentUserIdddd.cs</DependentUpon>
+    <Compile Include="Migrations\201709080500105_migrModel.cs" />
+    <Compile Include="Migrations\201709080500105_migrModel.Designer.cs">
+      <DependentUpon>201709080500105_migrModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -456,47 +412,14 @@
     <EmbeddedResource Include="Migrations\201706040304228_Initial.resx">
       <DependentUpon>201706040304228_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706111353598_migrv1.resx">
-      <DependentUpon>201706111353598_migrv1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709040954266_AllMigrations.resx">
+      <DependentUpon>201709040954266_AllMigrations.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706131607426_migrPlaces.resx">
-      <DependentUpon>201706131607426_migrPlaces.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709072318554_migrCountryChange.resx">
+      <DependentUpon>201709072318554_migrCountryChange.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706140840117_migrAccomodations.resx">
-      <DependentUpon>201706140840117_migrAccomodations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706140917335_migrv2Accommodations.resx">
-      <DependentUpon>201706140917335_migrv2Accommodations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706141058370_migrRoomRes.resx">
-      <DependentUpon>201706141058370_migrRoomRes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706141936000_migrRegions.resx">
-      <DependentUpon>201706141936000_migrRegions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706150856121_migrAccommodationsPlace.resx">
-      <DependentUpon>201706150856121_migrAccommodationsPlace.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706151135371_migrCommentAccomodation.resx">
-      <DependentUpon>201706151135371_migrCommentAccomodation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706151459102_migrAccount.resx">
-      <DependentUpon>201706151459102_migrAccount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706161627277_migrRoomAccFK.resx">
-      <DependentUpon>201706161627277_migrRoomAccFK.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706171254394_migrLatLongDouble.resx">
-      <DependentUpon>201706171254394_migrLatLongDouble.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706191343451_appuser key.resx">
-      <DependentUpon>201706191343451_appuser key.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706192250446_appUserRole.resx">
-      <DependentUpon>201706192250446_appUserRole.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706210343504_commentUserIdddd.resx">
-      <DependentUpon>201706210343504_commentUserIdddd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709080500105_migrModel.resx">
+      <DependentUpon>201709080500105_migrModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

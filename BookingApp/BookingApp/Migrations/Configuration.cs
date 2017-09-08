@@ -108,6 +108,7 @@ namespace BookingApp.Migrations
                 userManager.Create(user);
                 userManager.AddToRole(user.Id, "Manager");
             }
+            context.SaveChanges();
         }
     }
 }

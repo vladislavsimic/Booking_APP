@@ -18,6 +18,7 @@ namespace BookingApp.Controllers.API
     {
         private BAContext db = new BAContext();
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("regions", Name = "RegionApi")]
         public IHttpActionResult GetRegions()
@@ -26,6 +27,7 @@ namespace BookingApp.Controllers.API
             return Ok(l);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("region/{id}")]
         [ResponseType(typeof(Region))]
@@ -40,6 +42,7 @@ namespace BookingApp.Controllers.API
             return Ok(region);
         }
 
+        [Authorize(Roles="Admin")]
         [HttpPut]
         [Route("region/{id}")]
         [ResponseType(typeof(void))]
@@ -76,6 +79,7 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("region")]
         [ResponseType(typeof(Region))]
@@ -92,6 +96,7 @@ namespace BookingApp.Controllers.API
             return CreatedAtRoute("RegionApi", new { id = region.Id }, region);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("region/{id}")]
         [ResponseType(typeof(Region))]

@@ -18,7 +18,7 @@ namespace BookingApp.Controllers.API
     {
         private BAContext db = new BAContext();
 
-        // GET: api/Rooms
+        [AllowAnonymous]
         [HttpGet]
         [Route("rooms", Name = "RoomApi")]
         public IHttpActionResult GetRooms()
@@ -27,7 +27,7 @@ namespace BookingApp.Controllers.API
             return Ok(l);
         }
 
-        // GET: api/Rooms/5
+        [AllowAnonymous]
         [HttpGet]
         [Route("room/{id}")]
         [ResponseType(typeof(Room))]
@@ -42,7 +42,7 @@ namespace BookingApp.Controllers.API
             return Ok(room);
         }
 
-        // PUT: api/Rooms/5
+        [Authorize(Roles = "Manager")]
         [HttpPut]
         [Route("room/{id}")]
         [ResponseType(typeof(void))]
@@ -79,7 +79,7 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Rooms
+        [Authorize(Roles = "Manager")]
         [HttpPost]
         [Route("room")]
         [ResponseType(typeof(Room))]
@@ -96,7 +96,7 @@ namespace BookingApp.Controllers.API
             return CreatedAtRoute("RoomApi", new { id = room.Id }, room);
         }
 
-        // DELETE: api/Rooms/5
+        [Authorize(Roles = "Manager")]
         [HttpDelete]
         [Route("room/{id}")]
         [ResponseType(typeof(Room))]

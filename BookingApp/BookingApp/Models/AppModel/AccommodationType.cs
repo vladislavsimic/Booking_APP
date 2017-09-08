@@ -11,6 +11,7 @@ namespace BookingApp.Models.AppModel
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class AccommodationType
     {
@@ -20,7 +21,9 @@ namespace BookingApp.Models.AppModel
             this.Accommodations = new HashSet<Accommodation>();
         }
     
+        [Key]
         public int Id { get; set; }
+        [MaxLength(40)]
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

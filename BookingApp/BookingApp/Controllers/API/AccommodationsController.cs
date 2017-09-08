@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net.Http.Headers;
 using BookingApp.Hubs;
+using System.Web.Http.OData;
 
 namespace BookingApp.Controllers.API
 {
@@ -25,39 +26,36 @@ namespace BookingApp.Controllers.API
         public const string ServerUrl = "http://localhost:54042";
         public const int MaxImageSize = 1024 * 1024 * 1;
 
+        [EnableQuery]
+        [AllowAnonymous]
         [HttpGet]
         [Route("accs", Name = "AccApi")]
         public IHttpActionResult GetAccommodations()
         {
             var l = this.db.Accommodations.ToList();
-            if (l != null)
+            if (l == null)
             {
-               /* foreach (Accommodation acc in l)
-                {
-                    if (acc.Comments.Count > 0)
-                    acc.AverageGrade = Math.Round(acc.Comments.Average(x => x.Grade), 1);
-                }*/
+                return NotFound();
             }
             return Ok(l);
         }
 
+        [EnableQuery]
+        [Authorize(Roles="Manager")]
         [HttpGet]
         [Route("accsmanager/{username}")]
         public IHttpActionResult GetAccommodations(string username)
         {
             AppUser user = this.db.AppUsers.FirstOrDefault(x => x.Username == username);
             var l = this.db.Accommodations.Where(x=>x.AppUser_Id==user.Id).ToList();
-            if (l != null)
+            if (l == null)
             {
-                /* foreach (Accommodation acc in l)
-                 {
-                     if (acc.Comments.Count > 0)
-                     acc.AverageGrade = Math.Round(acc.Comments.Average(x => x.Grade), 1);
-                 }*/
+                return NotFound();
             }
             return Ok(l);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("acc/{id}")]
         [ResponseType(typeof(Accommodation))]
@@ -72,6 +70,7 @@ namespace BookingApp.Controllers.API
             return Ok(accommodation);
         }
 
+        [Authorize(Roles="Manager")]
         [HttpPut]
         [Route("acc/{id}")]
         [ResponseType(typeof(void))]
@@ -80,6 +79,12 @@ namespace BookingApp.Controllers.API
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            var user = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
+            if (!user.appUserId.Equals(accommodation.AppUser_Id))
+            {
+                return BadRequest();
             }
 
             if (id != accommodation.Id)
@@ -108,6 +113,7 @@ namespace BookingApp.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Authorize(Roles="Manager")]
         [HttpPost]
         [Route("acc")]
         [ResponseType(typeof(Accommodation))]
@@ -187,6 +193,7 @@ namespace BookingApp.Controllers.API
             }
         }
 
+        [Authorize(Roles="Manager")]
         [HttpDelete]
         [Route("acc/{id}")]
         [ResponseType(typeof(Accommodation))]
@@ -204,10 +211,9 @@ namespace BookingApp.Controllers.API
             return Ok(accommodation);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         [Route("approve/{id}")]
-        [ResponseType(typeof(void))]
         public IHttpActionResult ApproveAccomodation(int id)
         {
 
@@ -244,7 +250,49 @@ namespace BookingApp.Controllers.API
                     throw;
                 }
             }
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok();
+        }
+
+        [Authorize(Roles="Admin")]
+        [HttpPut]
+        [Route("ban/{id}")]
+        public IHttpActionResult BanAccomodation(int id)
+        {
+
+            var accomodation = db.Accommodations.FirstOrDefault(x => x.Id == id);
+
+            if (accomodation == null)
+            {
+                return this.NotFound();
+            }
+
+            accomodation.Approved = false;
+
+            db.Entry(accomodation).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+
+                AppUser appUser = this.db.AppUsers.FirstOrDefault(x => x.Id == accomodation.AppUser_Id);
+                if (appUser != null)
+                {
+                    NotificationHub.NotifyManager(accomodation.Name, appUser.Username);
+                }
+
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!AccommodationExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

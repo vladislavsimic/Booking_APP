@@ -11,12 +11,15 @@ namespace BookingApp.Models.AppModel
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class Comment
     {
+        [Key]
         public int Id { get; set; }
         public int Grade { get; set; }
+        [MaxLength(100)]
         public string Text { get; set; }
         [ForeignKey("Accommodation")]
         public int Acc_Id { get; set; }

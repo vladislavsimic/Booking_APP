@@ -11,9 +11,11 @@ namespace BookingApp.Models.AppModel
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     public partial class RoomReservations
     {
+        [Key]
         public int Id { get; set; }
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
